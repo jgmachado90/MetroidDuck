@@ -64,8 +64,22 @@ public class DuckMovement : MonoBehaviour
 
         if (collision.tag == "CameraChanger")
         {
+            Debug.Log("colidiu camera changer = " + collision.tag);
             Camera.main.GetComponent<CameraChanger>().SetTarget(collision.transform);
 
+        }
+
+        if(collision.tag == "SecretPlace")
+        {
+            collision.GetComponent<SecretPlace>().UnlockSecretPlace();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "SecretPlace")
+        {
+            collision.GetComponent<SecretPlace>().LockSecretPlace();
         }
     }
 

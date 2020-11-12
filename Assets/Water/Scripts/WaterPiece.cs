@@ -55,6 +55,14 @@ public class WaterPiece : MonoBehaviour
             direction = -1;
             minY = -100f;
             speedY += 0.01f;
+            if(speedX > 0)
+            {
+                speedX -= 0.01f;
+            }
+            else
+            {
+                speedX = 0;
+            }
         }
     }
 
