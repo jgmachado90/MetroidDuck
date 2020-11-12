@@ -9,6 +9,8 @@ TagManager:
   - FallDie
   - SpawnPoint
   - CameraChanger
+  - SecretPlace
+  - WaterDestroyer
   layers:
   - Default
   - TransparentFX

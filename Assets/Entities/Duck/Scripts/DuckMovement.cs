@@ -64,7 +64,7 @@ public class DuckMovement : MonoBehaviour
 
         if (collision.tag == "CameraChanger")
         {
-            Debug.Log("colidiu camera changer = " + collision.tag);
+
             Camera.main.GetComponent<CameraChanger>().SetTarget(collision.transform);
 
         }

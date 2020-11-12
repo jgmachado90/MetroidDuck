@@ -101,3 +101,7 @@ MonoBehaviour:
   speedY: 0
   falling: 0
   howEarlyFall: -0.6
+  isJelly: 0
+  minimestY: -52
+  wontFall: 0
+  lifetime: 60

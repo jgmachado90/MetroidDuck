@@ -29,6 +29,7 @@ public class WaterSpawner : MonoBehaviour
             GameObject waterPiece = Instantiate(waterPieces[UnityEngine.Random.Range(0, waterPieces.Count)], transform.position, Quaternion.identity, transform);
             waterPiece.transform.localScale = new Vector3(waterPiece.transform.localScale.x * UnityEngine.Random.Range(0.5f, maxWaterPieceScale), waterPiece.transform.localScale.y * UnityEngine.Random.Range(0.5f, maxWaterPieceScale), waterPiece.transform.localScale.z);
             waterPiece.transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f, 2f), transform.position.z);
+            
         }
     }
 

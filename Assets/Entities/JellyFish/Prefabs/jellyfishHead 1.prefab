@@ -269,6 +269,9 @@ MonoBehaviour:
   falling: 0
   howEarlyFall: 0
   isJelly: 1
+  minimestY: -52
+  wontFall: 0
+  lifetime: 60
 --- !u!58 &7534330920882207243
 CircleCollider2D:
   m_ObjectHideFlags: 0

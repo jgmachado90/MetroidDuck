@@ -14,16 +14,21 @@ public class WaterPiece : MonoBehaviour
     public bool falling = false;
     public float howEarlyFall;
     public bool isJelly;
-    
+    public float minimestY;
+    public bool wontFall;
+    public float lifetime;
+
     // Start is called before the first frame update
     void Start()
     {
+
         if (!isJelly)
         {
             StartCoroutine(DelayedDestroy());
         }
         if (isJelly)
         {
+            Debug.Log("I M JELLY" + gameObject, gameObject);
             maxSpeedX = maxSpeedX * 2;
         }
         speedX = UnityEngine.Random.Range(maxSpeedX, maxSpeedX);
@@ -37,19 +42,26 @@ public class WaterPiece : MonoBehaviour
 
     public IEnumerator DelayedDestroy()
     {
-        yield return new WaitForSeconds(16f);
+        yield return new WaitForSeconds(lifetime);
         Destroy(this.gameObject);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(transform.position.y < minimestY)
+        {
+            Destroy(this.gameObject);
+        }
+
         transform.position = new Vector3(transform.position.x + speedX, transform.position.y + (speedY * direction), transform.position.z);
         if (transform.position.y < minY && !falling)
             direction = 1;
         if (transform.position.y > maxY)
             direction = -1;
-        if(transform.position.x > 0f - howEarlyFall)
+        
+
+        if(!wontFall && transform.position.x > 0f - howEarlyFall)
         {
             falling = true;
             direction = -1;
@@ -65,6 +77,7 @@ public class WaterPiece : MonoBehaviour
             }
         }
     }
+
 
 
 }
