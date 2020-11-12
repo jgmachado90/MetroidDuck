@@ -13,12 +13,20 @@ public class WaterPiece : MonoBehaviour
     private int direction = 1;
     public bool falling = false;
     public float howEarlyFall;
+    public bool isJelly;
     
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DelayedDestroy());
-        speedX = UnityEngine.Random.Range(0.01f, maxSpeedX);
+        if (!isJelly)
+        {
+            StartCoroutine(DelayedDestroy());
+        }
+        if (isJelly)
+        {
+            maxSpeedX = maxSpeedX * 2;
+        }
+        speedX = UnityEngine.Random.Range(maxSpeedX, maxSpeedX);
         speedY = UnityEngine.Random.Range(0.01f, 0.03f);
         if(UnityEngine.Random.Range(0 , 2) >= 1) { direction = 1;}
         else { direction = -1; }

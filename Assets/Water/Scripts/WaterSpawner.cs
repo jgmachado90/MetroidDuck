@@ -6,6 +6,7 @@ using UnityEngine;
 public class WaterSpawner : MonoBehaviour
 {
 
+    public float spawnDelay;
     public List<GameObject> waterPieces;
     public GameObject jellyFish;
     public float maxWaterPieceScale;
@@ -24,7 +25,7 @@ public class WaterSpawner : MonoBehaviour
         while (true)
         {
            
-            yield return new WaitForSeconds(0.0001f);
+            yield return new WaitForSeconds(spawnDelay);
             GameObject waterPiece = Instantiate(waterPieces[UnityEngine.Random.Range(0, waterPieces.Count)], transform.position, Quaternion.identity, transform);
             waterPiece.transform.localScale = new Vector3(waterPiece.transform.localScale.x * UnityEngine.Random.Range(0.5f, maxWaterPieceScale), waterPiece.transform.localScale.y * UnityEngine.Random.Range(0.5f, maxWaterPieceScale), waterPiece.transform.localScale.z);
             waterPiece.transform.position = new Vector3(transform.position.x, transform.position.y + UnityEngine.Random.Range(-1f, 2f), transform.position.z);

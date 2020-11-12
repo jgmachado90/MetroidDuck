@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DuckMovement : MonoBehaviour
 {
+    public Transform currentSpawnPoint;
+
     public float aceleration;
     public float deceleration;
     public float maxSpeed;
@@ -46,7 +48,36 @@ public class DuckMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             Vector2 force = new Vector2(0, bounceForce);
             rb.AddForce(force,ForceMode2D.Impulse);
+            Destroy(collision.gameObject);
         }
+
+        if(collision.tag == "FallDie")
+        {
+            Debug.Log("Colidiu com rio");
+            Die();
+        }
+        if(collision.tag == "SpawnPoint")
+        {
+            currentSpawnPoint = collision.transform;
+          
+        }
+
+        if (collision.tag == "CameraChanger")
+        {
+            Camera.main.GetComponent<CameraChanger>().SetTarget(collision.transform);
+
+        }
+    }
+
+    public void Die()
+    {
+        Respawn();
+    }
+
+    public void Respawn()
+    {
+        rb.velocity = Vector2.zero;
+        transform.position = currentSpawnPoint.position;
     }
 
 }
