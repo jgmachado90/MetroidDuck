@@ -81,9 +81,12 @@ public class DuckMovement : MonoBehaviour
 
         if(collision.tag == "SquirtDetector")
         {
-            collision.GetComponentInParent<Whale>().Squirt();
-            Vector2 force = new Vector2(0, bounceForce*3);
-            rb.AddForce(force, ForceMode2D.Impulse);
+            if (collision.GetComponentInParent<Whale>().canSquirt)
+            {
+                collision.GetComponentInParent<Whale>().Squirt();
+                Vector2 force = new Vector2(0, bounceForce * 1.5f);
+                rb.AddForce(force, ForceMode2D.Impulse);
+            }
         }
 
     }
