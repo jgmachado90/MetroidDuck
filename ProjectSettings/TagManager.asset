@@ -11,6 +11,8 @@ TagManager:
   - CameraChanger
   - SecretPlace
   - WaterDestroyer
+  - FxTemporaire
+  - SquirtDetector
   layers:
   - Default
   - TransparentFX

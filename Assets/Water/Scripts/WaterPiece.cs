@@ -28,7 +28,6 @@ public class WaterPiece : MonoBehaviour
         }
         if (isJelly)
         {
-            Debug.Log("I M JELLY" + gameObject, gameObject);
             maxSpeedX = maxSpeedX * 2;
         }
         speedX = UnityEngine.Random.Range(maxSpeedX, maxSpeedX);

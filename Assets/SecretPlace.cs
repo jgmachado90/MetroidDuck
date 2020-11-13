@@ -10,7 +10,8 @@ public class SecretPlace : MonoBehaviour
         Debug.Log("entrou no lugar secreto");
         foreach(Transform child in transform)
         {
-            child.GetComponent<SpriteRenderer>().sortingOrder = 15;
+            if(child.GetComponent<SpriteRenderer>())
+                child.GetComponent<SpriteRenderer>().sortingOrder = 15;
         }
     }
 
@@ -19,7 +20,8 @@ public class SecretPlace : MonoBehaviour
         Debug.Log("saiu do lugar secreto");
         foreach (Transform child in transform)
         {
-            child.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            if (child.GetComponent<SpriteRenderer>())
+                child.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
     }
 

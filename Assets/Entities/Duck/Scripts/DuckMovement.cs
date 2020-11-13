@@ -6,7 +6,7 @@ using UnityEngine;
 public class DuckMovement : MonoBehaviour
 {
     public Transform currentSpawnPoint;
-
+    public static DuckMovement instance;
     public float aceleration;
     public float deceleration;
     public float maxSpeed;
@@ -15,6 +15,10 @@ public class DuckMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float bounceForce;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -66,13 +70,22 @@ public class DuckMovement : MonoBehaviour
         {
 
             Camera.main.GetComponent<CameraChanger>().SetTarget(collision.transform);
-
+            SegmentSceneManager newCurrentScene = collision.GetComponent<CameraInfo>().scene.GetComponent<SegmentSceneManager>();
+            SceneManager.instance.SetNewCurrentScene(newCurrentScene);
         }
 
         if(collision.tag == "SecretPlace")
         {
             collision.GetComponent<SecretPlace>().UnlockSecretPlace();
         }
+
+        if(collision.tag == "SquirtDetector")
+        {
+            collision.GetComponentInParent<Whale>().Squirt();
+            Vector2 force = new Vector2(0, bounceForce*3);
+            rb.AddForce(force, ForceMode2D.Impulse);
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

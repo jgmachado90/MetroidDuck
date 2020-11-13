@@ -6,7 +6,6 @@ public class EnemyMovement : MonoBehaviour
 {
     public LayerMask groundLayer;
 
-
     public bool platformMover;
     public int direction = 1;
     public float speed;
