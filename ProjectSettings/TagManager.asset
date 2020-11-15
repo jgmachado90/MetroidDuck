@@ -13,6 +13,7 @@ TagManager:
   - WaterDestroyer
   - FxTemporaire
   - SquirtDetector
+  - DialogueEntity
   layers:
   - Default
   - TransparentFX

@@ -19,6 +19,10 @@ public class DuckMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float bounceForce;
 
+
+    public DialogueTrigger currentDialogueEntity;
+
+
     private void OnEnable()
     {
         playerControls.Gameplay.Enable();
@@ -42,15 +46,19 @@ public class DuckMovement : MonoBehaviour
 
     void Action()
     {
-        Debug.Log("action");
+        if(currentDialogueEntity != null)
+        {
+            currentDialogueEntity.TriggerDialogue();
+        }
+            
     }
 
- 
+
+
     private void Update()
     {
         Vector2 m = new Vector2(move.x, move.y);
 
-        Debug.Log("move = " + m);
 
         if (move.x != 0)
             transform.position = new Vector2( transform.position.x + (m.x * aceleration * Time.deltaTime), transform.position.y);
@@ -118,13 +126,28 @@ public class DuckMovement : MonoBehaviour
             }
         }
 
+        if (collision.tag == "DialogueEntity")
+        {
+            currentDialogueEntity = collision.GetComponent<DialogueTrigger>();
+        }
+
+
     }
+
+
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "SecretPlace")
         {
             collision.GetComponent<SecretPlace>().LockSecretPlace();
+        }
+
+        if (collision.tag == "DialogueEntity")
+        {
+            currentDialogueEntity = null;
+            DialogueManager.instance.EndDialogue();
         }
     }
 
