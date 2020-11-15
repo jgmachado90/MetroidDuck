@@ -2,9 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DuckMovement : MonoBehaviour
 {
+    ControllerActions playerControls;
+    Vector2 move;
+
     public Transform currentSpawnPoint;
     public static DuckMovement instance;
     public float aceleration;
@@ -15,28 +19,53 @@ public class DuckMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float bounceForce;
 
+    private void OnEnable()
+    {
+        playerControls.Gameplay.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Gameplay.Enable();
+    }
+
     private void Awake()
     {
         instance = this;
+        playerControls = new ControllerActions();
+
+        playerControls.Gameplay.ActionButton.performed += ctx => Action();
+
+        playerControls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        //playerControls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
     }
 
+    void Action()
+    {
+        Debug.Log("action");
+    }
+
+ 
     private void Update()
     {
+        Vector2 m = new Vector2(move.x, move.y);
 
-        if ((Input.GetAxisRaw("Horizontal") != 0))
-            transform.position = new Vector2( transform.position.x + (Input.GetAxisRaw("Horizontal") * aceleration * Time.deltaTime), transform.position.y);
+        Debug.Log("move = " + m);
+
+        if (move.x != 0)
+            transform.position = new Vector2( transform.position.x + (m.x * aceleration * Time.deltaTime), transform.position.y);
 
         /*if ((Input.GetAxisRaw("Vertical") != 0))
             transform.position = new Vector2(transform.position.x , transform.position.y + (Input.GetAxisRaw("Vertical") * aceleration * Time.deltaTime));
         */
 
 
-        if (Input.GetAxisRaw("Horizontal") > 0  && facingRight == false){
+        if (m.x > 0  && facingRight == false){
             facingRight = true;
             sprite.flipX = false;
         }
 
-        else if(Input.GetAxisRaw("Horizontal") < 0 && facingRight == true)
+        else if(m.x < 0 && facingRight == true)
         {
             facingRight = false;
             sprite.flipX = true;
