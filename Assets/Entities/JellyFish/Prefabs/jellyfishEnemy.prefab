@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 7534330920882207243}
   - component: {fileID: 5423016715677493135}
   - component: {fileID: 159310336}
+  - component: {fileID: 159310332}
   m_Layer: 0
   m_Name: jellyfishEnemy
   m_TagString: JellyHead
@@ -304,6 +305,19 @@ MonoBehaviour:
   platformMover: 0
   direction: 1
   speed: 2
+--- !u!114 &159310332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000938765366364069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570aedb23edf7314ba92115bcca62cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceForce: 22
 --- !u!1 &4286185424827911769
 GameObject:
   m_ObjectHideFlags: 0

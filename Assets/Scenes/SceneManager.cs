@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public static SceneManager instance;
+    private static SceneManager _instance;
+    public static SceneManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
     public SegmentSceneManager currentMainScene;
 
     private void Awake()
     {
-        instance = this;
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
+        }
     }
 
     public void SetNewCurrentScene(SegmentSceneManager newCurrentScene)

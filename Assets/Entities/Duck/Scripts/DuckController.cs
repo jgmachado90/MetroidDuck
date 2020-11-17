@@ -80,17 +80,9 @@ public class DuckController : MonoBehaviour
         }
         if(collision.tag == "SpawnPoint")
         {
-            currentSpawnPoint = collision.transform;
-          
+            currentSpawnPoint = collision.transform; 
         }
 
-        if (collision.tag == "CameraChanger")
-        {
-
-            Camera.main.GetComponent<CameraChanger>().SetTarget(collision.transform);
-            SegmentSceneManager newCurrentScene = collision.GetComponent<CameraInfo>().scene.GetComponent<SegmentSceneManager>();
-            SceneManager.instance.SetNewCurrentScene(newCurrentScene);
-        }
 
         if(collision.tag == "SecretPlace")
         {
