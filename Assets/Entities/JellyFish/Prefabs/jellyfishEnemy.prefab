@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 4553478187955673509}
   - component: {fileID: 7534330920882207243}
   - component: {fileID: 5423016715677493135}
+  - component: {fileID: 159310336}
   m_Layer: 0
   m_Name: jellyfishEnemy
   m_TagString: JellyHead
@@ -285,6 +286,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &159310336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000938765366364069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6f592722ba03243bb52784c4ab0a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  platformMover: 0
+  direction: 1
+  speed: 2
 --- !u!1 &4286185424827911769
 GameObject:
   m_ObjectHideFlags: 0
