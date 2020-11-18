@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpawnPoint: {fileID: 0}
   minXToMove: 0.5
-  speedX: 12
+  speedX: 15
   facingRight: 1
   sprite: {fileID: 3669941883677405635}
   rb: {fileID: 3669941883677406783}
