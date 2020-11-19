@@ -12,6 +12,7 @@ public class CameraChanger : MonoBehaviour
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+        target.position = new Vector3(target.position.x, target.position.y, -10f);
         willMove = true;
     }
 

@@ -6,6 +6,7 @@ public class CameraInfo : MonoBehaviour
 {
     public int id;
     public Transform scene;
+    public float size;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,6 +16,10 @@ public class CameraInfo : MonoBehaviour
             Camera.main.GetComponent<CameraChanger>().SetTarget(transform);
             SegmentSceneManager newCurrentScene = scene.GetComponent<SegmentSceneManager>();
             SceneManager.Instance.SetNewCurrentScene(newCurrentScene);
+            if(size != 0)
+            {
+                Camera.main.orthographicSize = size;
+            }
         }
     }
 }
