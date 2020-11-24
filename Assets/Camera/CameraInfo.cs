@@ -13,7 +13,7 @@ public class CameraInfo : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Camera.main.GetComponent<CameraChanger>().SetTarget(transform);
+            //Camera.main.GetComponent<CameraChanger>().SetTarget(transform);
             SegmentSceneManager newCurrentScene = scene.GetComponent<SegmentSceneManager>();
             SceneManager.Instance.SetNewCurrentScene(newCurrentScene);
             if(size != 0)

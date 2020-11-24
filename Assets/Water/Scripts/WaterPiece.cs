@@ -77,6 +77,14 @@ public class WaterPiece : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "WaterDestroyer")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 
 
 }
