@@ -16,6 +16,7 @@ public class DuckController : MonoBehaviour
     public SpriteRenderer sprite;
     public Rigidbody2D rb;
 
+    public Transform lastBouncedWall;
 
     private void OnEnable()
     {
@@ -71,6 +72,21 @@ public class DuckController : MonoBehaviour
    
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "JumpWall")
+        {
+            Debug.Log("RB VELOCITY Y = " + rb.velocity.y);
+            if (rb.velocity.y > 0 && lastBouncedWall != collision.transform)
+            {
+                Debug.Log("vai dar bounce wall");
+                rb.velocity = Vector2.zero;
+                rb.AddForce(new Vector2(0, 25f), ForceMode2D.Impulse);
+                lastBouncedWall = collision.transform;
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
       
@@ -105,6 +121,7 @@ public class DuckController : MonoBehaviour
         }
 
 
+
     }
 
 
@@ -124,9 +141,14 @@ public class DuckController : MonoBehaviour
         }
     }
 
+
+
+
+
     public void Die()
     {
         Respawn();
+        SceneManager.Instance.OnRespawn();
     }
 
     public void Respawn()
